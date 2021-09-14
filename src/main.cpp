@@ -1,5 +1,6 @@
 #include "global.h"
 #include "vector.h"
+#include "camera.h"
 
 int main( )
 {
@@ -7,4 +8,7 @@ int main( )
 
 	Vector3 point;
 	point.Dump( );
+
+	Camera camera;
+	camera.Dump( );
 }
