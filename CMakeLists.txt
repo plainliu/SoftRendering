@@ -4,5 +4,7 @@ project(SoftRendering)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(SoftRendering
-	src/main.cpp
+	"src/global.h"
+	"src/vector.h"
+	"src/main.cpp"
 )
