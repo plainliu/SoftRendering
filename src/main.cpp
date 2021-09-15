@@ -2,6 +2,7 @@
 #include "vector.h"
 #include "camera.h"
 #include "matrix.h"
+#include "render.h"
 
 int main( )
 {
@@ -29,4 +30,7 @@ int main( )
 	( matrix1 * matrix1 ).Dump( );
 
 	( matrix * v4 ).Dump( );
+
+	Render* render = Render::GetRender( );
+	render->Draw( );
 }

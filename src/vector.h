@@ -13,6 +13,13 @@ public:
 	Vector3( ): x( 0.f ), y( 0.f ), z( 0.f ) { }
 	Vector3( float xx, float yy, float zz ): x( xx ), y( yy ), z( zz ) { }
 
+	void Clear( )
+	{
+		x = 0.f;
+		y = 0.f;
+		z = 0.f;
+	}
+
 	void Dump( )
 	{
 		std::cout << "Vector3[ " << x << ", " << y << ", " << z << " ]" << std::endl;

@@ -8,5 +8,6 @@ add_executable(SoftRendering
 	"src/vector.h"
 	"src/matrix.h"
 	"src/camera.h"
+	"src/render.h"
 	"src/main.cpp"
 )
