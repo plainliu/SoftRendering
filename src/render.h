@@ -3,8 +3,6 @@
 #include "global.h"
 #include "vector.h"
 
-#include <fstream>
-
 class Render
 {
 private:
@@ -28,43 +26,19 @@ public:
 			framebuffer[i].Clear( );
 	}
 
+	int GetIndex( int i, int j )
+	{
+		return j * width + i;
+	}
+
 	void SetColor( int i, int j, Vector3 color )
 	{
 		framebuffer[ GetIndex( i, j ) ] = color;
 	}
 
-	void Draw( )
-	{
-		std::ofstream out;
-		out.open( "render.ppm", std::ios::out );
-
-		out << "P3\n" << width << ' ' << height << "\n255\n";
-
-		for ( int j = height - 1; j >= 0; --j ) {
-			for ( int i = 0; i < width; ++i ) {
-				//auto r = double( i ) / ( width - 1 );
-				//auto g = double( j ) / ( height - 1 );
-				//auto b = 0.25;
-
-				Vector3& color = framebuffer[ GetIndex( i, j ) ];
-				auto r = color.x;
-				auto g = color.y;
-				auto b = color.z;
-
-				int ir = static_cast<int>( 255.999 * r );
-				int ig = static_cast<int>( 255.999 * g );
-				int ib = static_cast<int>( 255.999 * b );
-
-				out << ir << ' ' << ig << ' ' << ib << '\n';
-			}
-		}
-		out.close( );
-	}
-
-	int GetIndex( int i, int j )
-	{
-		return j * width + i;
-	}
+public:
+	void Draw( );
+	void DrawPoint( const Vector2& p, const Vector3& color );
 
 public:
 	static Render* sRender;
@@ -75,5 +49,3 @@ public:
 		return sRender;
 	}
 };
-
-Render* Render::sRender = nullptr;

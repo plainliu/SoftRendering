@@ -2,6 +2,28 @@
 
 #include "global.h"
 
+class Vector2
+{
+public:
+	float x;
+	float y;
+
+public:
+	Vector2( ) : x( 0.f ), y( 0.f ) { }
+	Vector2( float xx, float yy ) : x( xx ), y( yy ) { }
+
+	void Clear( )
+	{
+		x = 0.f;
+		y = 0.f;
+	}
+
+	void Dump( )
+	{
+		std::cout << "Vector2[ " << x << ", " << y << " ]" << std::endl;
+	}
+};
+
 class Vector3
 {
 public:

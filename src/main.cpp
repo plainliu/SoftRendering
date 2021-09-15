@@ -32,5 +32,6 @@ int main( )
 	( matrix * v4 ).Dump( );
 
 	Render* render = Render::GetRender( );
+	render->DrawPoint( Vector2( 20, 10 ), Vector3( 1.f, 1.f, 1.f ) );
 	render->Draw( );
 }
