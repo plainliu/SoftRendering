@@ -32,8 +32,35 @@ void Render::Draw( )
 	out.close( );
 }
 
-void Render::DrawPoint( const Vector2& p, const Vector3& color )
+void Render::Draw2DPoint( const Vector2& p, const Vector3& color )
 {
-	assert( p.x < width && p.y < height );
 	SetColor( p.x, p.y, color );
+}
+
+void Render::Draw2DLine( const Vector2& p1, const Vector2& p2, const Vector3& color1, const Vector3& color2 )
+{
+	int dx = std::abs( p1.x - p2.x );
+	int dy = std::abs( p1.y - p2.y );
+	if ( dy == 0 && dx == 0 )
+	{
+		SetColor( p1.x, p1.y, color1 );
+	}
+	else if ( dx >= dy )
+	{
+		for ( int i = 0; i <= dx; ++i )
+		{
+			float inter = (float) i / dx;
+			const Vector2 p = Interpolation( p1, p2, inter );
+			SetColor( p.x, p.y, Interpolation( color1, color2, inter ) );
+		}
+	}
+	else if ( dy > dx )
+	{
+		for ( int j = 0; j <= dy; ++j )
+		{
+			float inter = (float)j / dy;
+			const Vector2 p = Interpolation( p1, p2, inter );
+			SetColor( p.x, p.y, Interpolation( color1, color2, inter ) );
+		}
+	}
 }

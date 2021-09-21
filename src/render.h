@@ -31,14 +31,17 @@ public:
 		return j * width + i;
 	}
 
-	void SetColor( int i, int j, Vector3 color )
+	void SetColor( int i, int j, const Vector3& color )
 	{
+		assert( i < width && j < height );
 		framebuffer[ GetIndex( i, j ) ] = color;
 	}
 
 public:
 	void Draw( );
-	void DrawPoint( const Vector2& p, const Vector3& color );
+
+	void Draw2DPoint( const Vector2& p, const Vector3& color = Vector3( 1.f, 1.f, 1.f ) );
+	void Draw2DLine( const Vector2& p1, const Vector2& p2, const Vector3& color1 = Vector3( 1.f, 1.f, 1.f ), const Vector3& color2 = Vector3( 1.f, 1.f, 1.f ) );
 
 public:
 	static Render* sRender;
